@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/5615d94c9c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script:wght@600&family=Urbanist:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row current-weather">
+
+        <div class="col-7 first-col">
+          <h1 id="city"></h1>
+          <h3 id="current-day-hour"></h2>
+          <h4 id="current-weather"></h3>
+          <div class="current-weather-icon">
+            <img src="images/sunny.png" id="current-weather-icon" alt="sunny" width="250px" />
+            </div>
+        </div>
+
+        <div class="col-5 second-col">
+          <form class="city-search-bar">
+            <input type="text" id="city-input" placeholder="Enter a City"/>
+             <button id="search-button"><i class="fas fa-search"></i></button>
+          <button id="current-location-button"><i class="fas fa-map-marker-alt"></i></button>
+          </form>
+            <div class="current-temperature" id="current-temperature">
+              <strong>
+                <span id="temp"></span>
+              </strong>
+              <span class="units">
+               <a href="#" id="celcius">°C</a> |
+          <a href="#" id="farenheit"> °F</a>
+        </span>
+          <div class="min-max-temperature">
+            <small id="min-temperature"><br /></small>
+            <small id="max-temperature"></small> 
+        </div>
+        </div>
+        <div class="current-info">
+            <p id="feels-like"><br /> </p>
+            <img src="images/humidity.png" alt="humidity" width="50px" />
+            <p id="humidity"><br /></p>
+            <img src="images/wind.png" alt="wind" width="50px" /> 
+            <p id="wind-speed"></p> 
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+        <div class="row forecast">
+          <div class="col-2">
+            <p class="temperature">25°C</p>
+            <img src="images/sunny.png" alt="sunny" width="70px" />
+            <p class="forecast-hour">12pm</p>
+          </div>
+          <div class="col-2">
+            <p class="temperature">27°C</p>
+            <img src="images/sunClouds.png" alt="sun and clouds" width="120px"/>
+            <p class="forecast-hour">3pm</p>
+          </div>
+          <div class="col-2">
+            <p class="temperature">24°C</p>
+            <img src="images/sunny.png" alt="sunny" width="70px" />
+            <p class="forecast-hour">6pm</p>
+          </div>
+          <div class="col-2">
+            <p class="temperature">20°C</p>
+            <img src="images/starry.png" alt="starry night" width="85px"/>
+            <p class="forecast-hour">9pm</p>
+          </div>
+          <div class="col-2">
+            <p class="temperature">19°C</p>
+            <img src="images/moonClouds.png" alt="stars and clouds" width="110px"/>
+            <p class="forecast-hour">12am</p>
+          </div>
+          <div class="col-2">
+            <p class="temperature">17°C</p>
+            <img src="images/moonClouds.png" alt="stars and clouds" width="110px"/>
+            <p class="forecast-hour">3am</p>
+          </div>
+        </div>
+
+      </div>
+
+      <script src="src/index.js"></script>
+  </body>
+</html>
