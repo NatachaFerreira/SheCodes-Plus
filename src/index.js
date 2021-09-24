@@ -1,4 +1,5 @@
-function currentDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -14,9 +15,6 @@ function currentDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
-
-let currentTime = document.querySelector("#current-day-hour");
-currentTime.innerHTML = currentDate(new Date());
 
 function handleSearch(event) {
   event.preventDefault();
@@ -62,6 +60,7 @@ function refreshTempValues(response) {
   document.querySelector("#feels-like").innerHTML = "Feels Like: " + Math.round(response.data.main.feels_like) + "°";
   document.querySelector("#humidity").innerHTML = response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed) + " m/s";
+  document.querySelector("#current-day-hour").innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function refreshTempValuesToFarenheit(response) {
@@ -73,6 +72,7 @@ function refreshTempValuesToFarenheit(response) {
   document.querySelector("#feels-like").innerHTML = "Feels Like: " + Math.round(response.data.main.feels_like) + "°";
   document.querySelector("#humidity").innerHTML = response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed) + " mph";
+  document.querySelector("#current-day-hour").innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function toCelsius(event) {
