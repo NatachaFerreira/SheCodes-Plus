@@ -70,7 +70,7 @@ function refreshTempValuesToFarenheit(response) {
  
 }
 
-function toCelsius(event) {
+function displayCelsiusTemperature(event) {
   event.preventDefault();
   let city = document.querySelector("#city").innerHTML;
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
@@ -93,6 +93,29 @@ function displayFarenheitTemperature(event) {
   axios.get(apiUrl).then(refreshTempValuesToFarenheit);
 }
 
+function displayWeeklyForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function(day) {
+    forecastHTML =
+        forecastHTML +
+        `
+          <div class="col-2">
+            <div class="weather-forecast-date">${day}</div>
+            <img src="images/sunny.png" alt="sunny" width="70px"/>
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-max-temperature">25°</span>
+              <span class="weather-forecast-min-temperature">21°</span>
+            </div>
+          </div>
+      `;
+  })
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;    
+}
+
 let apiKey = "9eca7aac0b071aa16e3cb063adba0785";
 let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
 let units = "metric";
@@ -104,9 +127,10 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", currentLocationClick);
 
 let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", toCelsius);
+celciusLink.addEventListener("click", displayCelsiusTemperature);
 
 let farenheitLink = document.querySelector("#farenheit-link");
 farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
 getLocationBySearch("angra do heroismo");
+displayWeeklyForecast();

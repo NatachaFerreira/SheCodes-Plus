@@ -6,6 +6,11 @@ h1 {
   font-weight: bold;
 }
 
+footer {
+  text-align: center;
+  margin-top: -20px;
+}
+
 .container {
   background-color: #f2fefc;
   border: 1px solid #31535c;
@@ -89,12 +94,8 @@ button {
   margin: -35px 0px 25px 65px;
 }
 
-.forecast {
+.weather-forecast {
   text-align: center;
   margin-right: 10px;
 }
 
-footer {
-  text-align: center;
-  margin-top: -20px;
-}
