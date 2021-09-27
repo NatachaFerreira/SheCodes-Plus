@@ -75,15 +75,8 @@ function refreshTempValuesToFarenheit(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed) + " mph";
   document.querySelector("#current-day-hour").innerHTML = formatDate(response.data.dt * 1000);
-  document
-    .querySelector("#current-weather-icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-  document
-    .querySelector("#current-weather-icon")
-    .setAttribute("alt", `${response.data.weather[0].description}`);
+  document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#current-weather-icon").setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
 function toCelsius(event) {
@@ -94,13 +87,16 @@ function toCelsius(event) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
+  celciusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  
   axios.get(apiUrl).then(refreshTempValues);
 }
 
-let celcius = document.querySelector("#celcius");
-celcius.addEventListener("click", toCelsius);
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", toCelsius);
 
-function toFarenheit(event) {
+function displayFarenheitTemperature(event) {
   event.preventDefault();
   let city = document.querySelector("#city").innerHTML;
   let units = "imperial";
@@ -108,10 +104,13 @@ function toFarenheit(event) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
+  celciusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+
   axios.get(apiUrl).then(refreshTempValuesToFarenheit);
 }
 
-let farenheit = document.querySelector("#farenheit");
-farenheit.addEventListener("click", toFarenheit);
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
 
 getLocationBySearch("angra do heroismo");

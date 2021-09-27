@@ -52,6 +52,15 @@ button {
   text-decoration: underline;
 }
 
+.units .active {
+  color: #31535c;
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+
 .current-temperature small {
   font-size: 23px;
 }
@@ -61,6 +70,8 @@ button {
 .current-temperature small {
   font-family: "Cookie", cursive;
 }
+
+
 
 .min-max-temperature {
   display: block;
