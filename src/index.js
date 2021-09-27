@@ -61,6 +61,8 @@ function refreshTempValues(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed) + " m/s";
   document.querySelector("#current-day-hour").innerHTML = formatDate(response.data.dt * 1000);
+  document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#current-weather-icon").setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
 function refreshTempValuesToFarenheit(response) {
@@ -73,6 +75,15 @@ function refreshTempValuesToFarenheit(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML = Math.round(response.data.wind.speed) + " mph";
   document.querySelector("#current-day-hour").innerHTML = formatDate(response.data.dt * 1000);
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
 function toCelsius(event) {
