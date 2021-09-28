@@ -94,8 +94,36 @@ button {
   margin: -35px 0px 25px 65px;
 }
 
+#hourly-weekly-buttons {
+  text-align: center;
+}
+
+#hourly-button, #weekly-button {
+  border: 2px solid #31535c;
+  border-radius: 3px;
+  width: 70px;
+  margin: 5px;
+}
+
+#hourly-button:hover, #weekly-button:hover {
+  cursor: pointer;
+}
+
+#hourly-button:focus, #weekly-button:focus {
+  color: #f2fefc;
+  background-color: #31535c;
+}
+
 .weather-forecast {
   text-align: center;
-  margin-right: 10px;
+  margin: 40px 10px 40px 0px;
+
+}
+
+.weather-forecast-min-temperature {
+  opacity: 70%;
+}
+.hidden {
+  display: none;
 }
 
