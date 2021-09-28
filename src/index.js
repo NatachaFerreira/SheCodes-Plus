@@ -25,7 +25,7 @@ function formatDate(timestamp) {
     "December",
   ];
   let month = months[date.getMonth()];
-  
+
   let hours = date.getHours();
   let minutes = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
 
@@ -35,15 +35,7 @@ function formatDate(timestamp) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = [
-    "Sun",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
@@ -72,7 +64,6 @@ function getForecast(lat, lon) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely}&exclude={alerts}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(weeklyForecast);
-
 }
 
 function getLocationBySearch(city) {
@@ -85,7 +76,10 @@ function getCurrentLocation(currentLocation) {
   let apiUrl = `${apiEndpoint}?lat=${currentLocation.coords.latitude}&lon=${currentLocation.coords.longitude}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(refreshTempValues);
-  getForecast(currentLocation.coords.latitude, currentLocation.coords.longitude);
+  getForecast(
+    currentLocation.coords.latitude,
+    currentLocation.coords.longitude
+  );
 }
 
 function currentLocationClick(event) {
@@ -127,6 +121,8 @@ function refreshTempValues(response) {
 }
 
 function refreshTempValuesToFarenheit(response) {
+  
+  
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-date-hour").innerHTML = formatDate(
     response.data.dt * 1000
@@ -152,14 +148,16 @@ function refreshTempValuesToFarenheit(response) {
   document.querySelector("#feels-like").innerHTML =
     "Feels Like: " + Math.round(response.data.main.feels_like) + "°";
   document.querySelector("#humidity").innerHTML =
-    response.data.main.humidity + " %";
+    "Humidity: " + response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML =
-    Math.round(3.6 * response.data.wind.speed) + " mph";
+    "Wind: " + Math.round(3.6 * response.data.wind.speed) + " mph";
+    getForecast(response.data.coord.lat, response.data.coord.lon);
 }
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let city = document.querySelector("#city").innerHTML;
+  units = "metric";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
   celciusLink.classList.add("active");
@@ -171,33 +169,40 @@ function displayCelsiusTemperature(event) {
 function displayFarenheitTemperature(event) {
   event.preventDefault();
   let city = document.querySelector("#city").innerHTML;
-  let units = "imperial";
+  units = "imperial";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
   farenheitLink.classList.add("active");
   celciusLink.classList.remove("active");
 
   axios.get(apiUrl).then(refreshTempValuesToFarenheit);
+  
 }
 
 function hourlyForecast(response) {
-  console.log(response)
   let forecast = response.data.list;
   let forecastElement = document.querySelector("#forecast-hourly");
   let forecastHTML = `<div class="row weather-forecast-block">`;
 
   forecast.forEach(function (forecastDay, index) {
-    
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
           <div class="col-2">
-            <div class="weather-forecast-date">${formatHour(forecastDay.dt)}</div>
-            <img class="forecast-icon-block" src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
+            <div class="weather-forecast-date">${formatHour(
+              forecastDay.dt
+            )}</div>
+            <img class="forecast-icon-block" src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
             <div class="weather-forecast-temperatures">
-              <span class="weather-forecast-max-temperature">${Math.round(forecastDay.main.temp_max)}° |</span>
-              <span class="weather-forecast-min-temperature">${Math.round(forecastDay.main.temp_min)}°</span>
+              <span class="weather-forecast-max-temperature">${Math.round(
+                forecastDay.main.temp_max
+              )}° |</span>
+              <span class="weather-forecast-min-temperature">${Math.round(
+                forecastDay.main.temp_min
+              )}°</span>
             </div>
           </div>
       `;
@@ -209,18 +214,17 @@ function hourlyForecast(response) {
 }
 
 function weeklyForecast(response) {
-
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast-weekly");
-  
+
   let forecastHTML = `<div class="row weather-forecast-block">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if(index < 6) {
-    forecastHTML =
-      forecastHTML +
-      `
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-2">
             <div class="weather-forecast-date">${formatDay(
               forecastDay.dt
@@ -245,7 +249,7 @@ function weeklyForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function displayHourlyForecast(event){
+function displayHourlyForecast(event) {
   event.preventDefault();
   let hourlyForecast = document.querySelector("#forecast-hourly");
   let weeklyForecast = document.querySelector("#forecast-weekly");
@@ -257,10 +261,9 @@ function displayHourlyForecast(event){
 
   hourlyButton.classList.add("active-button");
   weeklyButton.classList.remove("active-button");
-
 }
 
-function displayWeeklyForecast(event){
+function displayWeeklyForecast(event) {
   event.preventDefault();
   let hourlyForecast = document.querySelector("#forecast-hourly");
   let weeklyForecast = document.querySelector("#forecast-weekly");
@@ -273,8 +276,6 @@ function displayWeeklyForecast(event){
   weeklyButton.classList.add("active-button");
   hourlyButton.classList.remove("active-button");
 }
-
-
 
 let apiKey = "9eca7aac0b071aa16e3cb063adba0785";
 let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
@@ -299,4 +300,3 @@ let weeklyButton = document.querySelector("#weekly-button");
 weeklyButton.addEventListener("click", displayWeeklyForecast);
 
 getLocationBySearch("angra do heroismo");
-
