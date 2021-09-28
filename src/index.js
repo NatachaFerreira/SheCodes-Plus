@@ -36,6 +36,7 @@ function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  
   return days[day];
 }
 
@@ -121,8 +122,6 @@ function refreshTempValues(response) {
 }
 
 function refreshTempValuesToFarenheit(response) {
-  
-  
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-date-hour").innerHTML = formatDate(
     response.data.dt * 1000
@@ -151,7 +150,7 @@ function refreshTempValuesToFarenheit(response) {
     "Humidity: " + response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML =
     "Wind: " + Math.round(3.6 * response.data.wind.speed) + " mph";
-    getForecast(response.data.coord.lat, response.data.coord.lon);
+  getForecast(response.data.coord.lat, response.data.coord.lon);
 }
 
 function displayCelsiusTemperature(event) {
@@ -176,7 +175,6 @@ function displayFarenheitTemperature(event) {
   celciusLink.classList.remove("active");
 
   axios.get(apiUrl).then(refreshTempValuesToFarenheit);
-  
 }
 
 function hourlyForecast(response) {

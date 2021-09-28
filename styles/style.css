@@ -19,8 +19,7 @@ button:hover {
 }
 
 footer {
-  text-align: center;
-  
+  text-align: center; 
 }
 
 .container {
@@ -71,8 +70,7 @@ footer {
 }
 
 ::placeholder {
-  color: #f2fefc;
-  
+  color: #f2fefc; 
 }
 
 #search-button {
