@@ -4,69 +4,95 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://kit.fontawesome.com/5615d94c9c.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script:wght@600&family=Urbanist:wght@500&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/5615d94c9c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script:wght@600&family=Urbanist:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
       <div class="row current-weather">
-
-        <div class="col-7 first-col">
+        <div class="col-6">
           <h1 id="city"></h1>
-          <h4 ><span id="current-date-hour"></span></h4>
+          <h4><span id="current-date-hour"></span></h4>
+        </div>
+        <div class="col-6 search-engine">
+          <form class="city-search-bar">
+            <input
+              type="search"
+              id="city-input"
+              placeholder="  Enter a City"
+              autocomplete="off"
+            />
+            <button id="search-button"><i class="fas fa-search"></i></button>
+            <button id="current-location-button">
+              <i class="fas fa-map-marker-alt"></i>
+            </button>
+          </form>
+        </div>
+        <div class="col-4 current-weather-block">
+          
           <h4 id="current-weather"></h4>
           <div class="current-weather-icon">
-            <img src="" id="current-weather-icon" alt=""/>
-            </div>
-        </div>
-
-        <div class="col-5 second-col">
-          <form class="city-search-bar">
-            <input type="search" id="city-input" placeholder="Enter a City" autocomplete="off"/>
-             <button id="search-button"><i class="fas fa-search"></i></button>
-          <button id="current-location-button"><i class="fas fa-map-marker-alt"></i></button>
-          </form>
-            <div class="current-temperature" id="current-temperature">
-              <strong>
-                <span id="temp"></span>
-              </strong>
-              <span class="units">
-               <a href="#" id="celcius-link" class="active">°C</a> |
-          <a href="#" id="farenheit-link"> °F</a>
-        </span>
-          <div class="min-max-temperature">
-            <small id="min-temperature"><br /></small>
-            <small id="max-temperature"></small> 
+            <img src="" id="current-weather-icon" alt="" width="150px"/>
           </div>
         </div>
-        <div class="current-info">
-            <p id="feels-like"><br /> </p>
-            <p id="humidity"><br /></p>
-            <p id="wind-speed"></p> 
+        <div class="col-4 current-temperature" id="current-temperature">
+          <strong>
+            <span id="temp"></span>
+          </strong>
+          <span class="units">
+            <a href="#" id="celcius-link" class="active">°C</a> |
+            <a href="#" id="farenheit-link"> °F</a>
+          </span>
+          <div class="min-max-temperature">
+            <small id="min-temperature"><br /></small>
+            <small id="max-temperature"></small>
+          </div>
+        </div>
+        <div class="col-4 second-col">
+          <div class="current-info">
+            <p id="feels-like"></p>
+            <p id="humidity"></p>
+            <p id="wind-speed"></p>
           </div>
         </div>
       </div>
-        <div id="hourly-weekly-buttons"> 
-          <button id=hourly-button>Hourly</button>
-          <button id=weekly-button>Weekly</button>
-        </div> 
-      <hr />
+      <div id="hourly-weekly-buttons">
+        <button class="active-button" id="hourly-button">Hourly</button>
+        <button id="weekly-button">Weekly</button>
+      </div>
+      
 
       <div class="weather-forecast" id="forecast-hourly"></div>
       <div class="weather-forecast hidden" id="forecast-weekly"></div>
-      </div>
+    </div>
 
-      <footer>
-          <a href="https://github.com/NatachaFerreira/SheCodes-Plus.git" target=”_blank” rel="noreferrer noopener">Open-source code</a>
-          by Natacha Ferreira
-      </footer>
+    <footer>
+      <a
+        href="https://github.com/NatachaFerreira/SheCodes-Plus.git"
+        target="”_blank”"
+        rel="noreferrer noopener"
+        >Open-source code</a
+      >
+      by Natacha Ferreira
+    </footer>
 
-      <script src="src/index.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>

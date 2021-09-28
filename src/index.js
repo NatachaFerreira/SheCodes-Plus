@@ -184,7 +184,7 @@ function hourlyForecast(response) {
   console.log(response)
   let forecast = response.data.list;
   let forecastElement = document.querySelector("#forecast-hourly");
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row weather-forecast-block">`;
 
   forecast.forEach(function (forecastDay, index) {
     
@@ -194,9 +194,9 @@ function hourlyForecast(response) {
         `
           <div class="col-2">
             <div class="weather-forecast-date">${formatHour(forecastDay.dt)}</div>
-            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
+            <img class="forecast-icon-block" src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
             <div class="weather-forecast-temperatures">
-              <span class="weather-forecast-max-temperature">${Math.round(forecastDay.main.temp_max)}°</span>
+              <span class="weather-forecast-max-temperature">${Math.round(forecastDay.main.temp_max)}° |</span>
               <span class="weather-forecast-min-temperature">${Math.round(forecastDay.main.temp_min)}°</span>
             </div>
           </div>
@@ -214,7 +214,7 @@ function weeklyForecast(response) {
 
   let forecastElement = document.querySelector("#forecast-weekly");
   
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row weather-forecast-block">`;
 
   forecast.forEach(function (forecastDay, index) {
     if(index < 6) {
@@ -222,11 +222,19 @@ function weeklyForecast(response) {
       forecastHTML +
       `
           <div class="col-2">
-            <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
+            <img class="forecast-icon-block" src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="${forecastDay.weather[0].description}" width="90px"/>
             <div class="weather-forecast-temperatures">
-              <span class="weather-forecast-max-temperature">${Math.round(forecastDay.temp.max)}°</span>
-              <span class="weather-forecast-min-temperature">${Math.round(forecastDay.temp.min)}°</span>
+              <span class="weather-forecast-max-temperature">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+              <span class="weather-forecast-min-temperature">${Math.round(
+                forecastDay.temp.min
+              )}°</span>
             </div>
           </div>
       `;
@@ -241,9 +249,14 @@ function displayHourlyForecast(event){
   event.preventDefault();
   let hourlyForecast = document.querySelector("#forecast-hourly");
   let weeklyForecast = document.querySelector("#forecast-weekly");
+  let hourlyButton = document.querySelector("#hourly-button");
+  let weeklyButton = document.querySelector("#weekly-button");
 
   hourlyForecast.classList.remove("hidden");
   weeklyForecast.classList.add("hidden");
+
+  hourlyButton.classList.add("active-button");
+  weeklyButton.classList.remove("active-button");
 
 }
 
@@ -251,9 +264,14 @@ function displayWeeklyForecast(event){
   event.preventDefault();
   let hourlyForecast = document.querySelector("#forecast-hourly");
   let weeklyForecast = document.querySelector("#forecast-weekly");
+  let hourlyButton = document.querySelector("#hourly-button");
+  let weeklyButton = document.querySelector("#weekly-button");
 
   weeklyForecast.classList.remove("hidden");
   hourlyForecast.classList.add("hidden");
+
+  weeklyButton.classList.add("active-button");
+  hourlyButton.classList.remove("active-button");
 }
 
 
