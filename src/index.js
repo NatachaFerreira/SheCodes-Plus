@@ -10,10 +10,26 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[date.getMonth()];
+  
   let hours = date.getHours();
   let minutes = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
 
-  return `${day} ${hours}:${minutes}`;
+  return `${day}, ${date.getDate()} ${month} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
