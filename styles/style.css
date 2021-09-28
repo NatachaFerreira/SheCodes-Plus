@@ -91,9 +91,21 @@ footer {
 }
 
 .current-temperature .units {
-  font-size: 40px;
+  font-size: 30px;
   position: absolute;
-  margin: 30px 0px 0px 0px;
+  margin: 35px 0px 0px 0px;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+
+.current-weather-block {
+  padding-top: 25px;
+}
+
+.current-temperature {
+  padding: 50px 0px 0px 30px;
 }
 
 .units a {
@@ -109,35 +121,23 @@ footer {
   cursor: default;
 }
 
-.units .active:hover {
-  text-decoration: none;
-}
-
-.current-weather-block {
-  padding-top: 25px;
-}
-.current-temperature {
-  font-family: "Cookie", cursive;
-  padding: 50px 0px 0px 45px;
-}
-
 .current-temperature small {
-  font-size: 23px;
+  font-size: 18px;
 }
 
 .min-max-temperature {
   display: block;
-  margin: -100px 0px 20px 110px;
+  margin: -90px 0px 20px 140px;
 }
 
 #max-temperature {
   display: block;
-  margin-top: -13px;
+  margin-top: -5px;
 }
 
 .current-info {
   font-size: 18px;
-  margin: 80px 0px 0px 50px;
+  margin: 90px 0px 0px 50px;
 }
 
 .current-info p {
@@ -152,7 +152,7 @@ footer {
 #hourly-button, #weekly-button {
   width: 80px;
   height: 40px;
-  margin: 50px 3px 0px 3px;
+  margin: 50px 6px 0px 6px;
   border: none;
   border-radius: 8px;
 }
