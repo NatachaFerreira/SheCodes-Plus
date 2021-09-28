@@ -105,7 +105,7 @@ function refreshTempValues(response) {
   document.querySelector("#humidity").innerHTML =
     response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML =
-    Math.round(response.data.wind.speed) + " m/s";
+    Math.round(3.6 * response.data.wind.speed) + " km/h";
 
   getForecast(response.data.coord.lat, response.data.coord.lon);
 }
@@ -138,7 +138,7 @@ function refreshTempValuesToFarenheit(response) {
   document.querySelector("#humidity").innerHTML =
     response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML =
-    Math.round(response.data.wind.speed) + " mph";
+    Math.round(3.6 * response.data.wind.speed) + " mph";
 }
 
 function displayCelsiusTemperature(event) {
