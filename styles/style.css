@@ -25,13 +25,13 @@ footer {
 
 .container {
   background: linear-gradient(183deg, rgb(242, 254, 252) 16%, rgb(130, 203, 203) 100%);  border-radius: 15px;
-  border: 1px solid #31535c;
+  /*border: 1px solid #31535c;*/
   box-shadow: 0px 11px 22px rgba(0, 0, 0, 0.3);
   color: #31535c;
   font-family: "Urbanist", sans-serif;
   margin: 30px auto 15px auto;
   max-width: 800px;
-  padding: 30px 0px 0px 45px;
+  padding: 30px 0px 40px 45px;
 }
 
 #current-weather {
@@ -156,10 +156,7 @@ footer {
   background-color: #31535c;
 }
 
-.weather-forecast {
-  text-align: center;
-  margin: 20px 8px 40px 0px;
-}
+
 
 .weather-forecast-min-temperature {
   opacity: 60%;
@@ -170,9 +167,10 @@ footer {
 }
 
 .weather-forecast-block {
+  text-align: center;
   background: linear-gradient(183deg, rgb(242, 254, 252) 11%, rgb(242, 254, 252) 11%, rgb(242, 254, 252) 43%, rgb(174, 238, 238) 100%);
   border-radius: 10px;
-  margin: 0px 40px 0px 0px;
+  margin: 20px 40px 0px 0px;
   padding: 25px;
 }
 
