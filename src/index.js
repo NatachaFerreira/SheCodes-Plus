@@ -103,9 +103,9 @@ function refreshTempValues(response) {
   document.querySelector("#feels-like").innerHTML =
     "Feels Like: " + Math.round(response.data.main.feels_like) + "°";
   document.querySelector("#humidity").innerHTML =
-    response.data.main.humidity + " %";
+    "Humidity: " + response.data.main.humidity + " %";
   document.querySelector("#wind-speed").innerHTML =
-    Math.round(3.6 * response.data.wind.speed) + " km/h";
+    "Wind: " + Math.round(3.6 * response.data.wind.speed) + " km/h";
 
   getForecast(response.data.coord.lat, response.data.coord.lon);
 }
