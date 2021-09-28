@@ -25,7 +25,6 @@ footer {
 
 .container {
   background: linear-gradient(183deg, rgb(242, 254, 252) 16%, rgb(130, 203, 203) 100%);  border-radius: 15px;
-  /*border: 1px solid #31535c;*/
   box-shadow: 0px 11px 22px rgba(0, 0, 0, 0.3);
   color: #31535c;
   font-family: "Urbanist", sans-serif;
@@ -55,14 +54,25 @@ footer {
   border-radius: 2px;
   width: 180px;
   height: 35px;
+  padding-left: 10px;
 }
 
 #city-input:focus {
   outline: none;
 }
 
+#city-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 13px;
+  width: 13px;
+  background-image: url(https://flexitauctions.com/wp-content/uploads/2019/01/white-x-png-2.png);
+  background-size: 13px 13px;
+}
+
 ::placeholder {
   color: #f2fefc;
+  
 }
 
 #search-button {
